@@ -120,7 +120,7 @@ function flatten(data) {
   let result = [];
   
   for (let i = 0; i < data.length; i++) {
-    if (data[i] instanceof Array) {
+    if (Array.isArray(data[i])) {
       result = result.concat(flatten(data[i]))
     } else {
       result.push(data[i])
@@ -165,12 +165,18 @@ function flatten(data) {
 //         }
 //     }
 // };
-//
+
 // fileFinder(desktop, 'app_academy_logo.svg');     // => true
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
 function fileFinder(directories, targetFile) {
+  for (const subDir in directories) {
+    if (subDir === targetFile || fileFinder(directories[subDir], targetFile)) {
+      return true
+    }
+  }
 
+  return false
 }
 
 
@@ -184,7 +190,16 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
 function pathFinder(directories, targetFile) {
+  for (const key in directories) {
+    if (key === targetFile) return `/${targetFile}`;
 
+    let result = pathFinder(directories[key], targetFile)
+    if (result) {
+      return key + result;
+    }
+  }
+
+  return null;
 }
 
 
