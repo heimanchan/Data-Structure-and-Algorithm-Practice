@@ -15,18 +15,13 @@
 // There are no characters in this string that do not repeat.
 
 function firstNotRepeatingCharacter(s) {
-  let l = new Array(26).fill(0);
-
   for (let i = 0; i < s.length; i++) {
-    console.log(s[i].charCodeAt() - 97)
-    l[s[i].charCodeAt() - 97] += 1;
-  }
-  console.log(l)
-  for (let j = 0; j < s.length; j++) {
-    if (l[s[j].charCodeAt() - 97] === 1) return s[j];
-  }
 
-  return "_"
+    if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) {
+      return s[i];
+    }
+  }
+  return '_';
 }
 
 console.log(firstNotRepeatingCharacter("abacabad"))
