@@ -115,7 +115,7 @@ function minChange(coins, amount) {
   coins.forEach(coin => {
     for (let i = 0; i < table.length; i++) {
       for (let qty = 0; qty * coin <= i; qty++) {
-        reminder = i - qty * coin;
+        reminder = i - qty * coin; 
         let attempt = table[reminder] + qty;
         if (attempt < table[i]) table[i] = attempt;
       }
