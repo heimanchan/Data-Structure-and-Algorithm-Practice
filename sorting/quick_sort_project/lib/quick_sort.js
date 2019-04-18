@@ -5,7 +5,7 @@ function quickSort(array) {
   let left = quickSort(array.filter(el => el < pivot));
   let right = quickSort(array.filter(el => el >= pivot));
 
-  return left.concat([pivot], right);
+  return [...left, pivot, ...right]
 }
 
 
