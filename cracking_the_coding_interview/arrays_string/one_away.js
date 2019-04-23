@@ -1,9 +1,9 @@
 const isOneAway = (s1, s2) => {
   if (s1.length === s2.length) {
     return oneReplace(s1, s2);
-  } else if (s1.length + 1 === s2.length) {
+  } else if (s1.length + 1 === s2.length) {   //s2 longer
     return oneEdit(s1, s2);
-  } else if (s2.length + 1 === s1.length) {
+  } else if (s2.length + 1 === s1.length) {   //s1 longer
     return oneEdit(s2, s1);
   }
 
@@ -26,6 +26,7 @@ const oneEdit = (s1, s2) => {
   let idx1 = 0, idx2 = 0;
 
   while (idx1 < s1.length && idx2 < s2.length) {
+    console.log(s1[idx1], s2[idx2])
     if (s1[idx1] !== s2[idx2]) {
       if (idx1 !== idx2) {
         return false
