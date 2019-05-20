@@ -13,6 +13,3 @@ function maxSubsetSumNoAdjacent(array) {
 	
 	return first;
 }
-
-// Do not edit the line below.
-exports.maxSubsetSumNoAdjacent = maxSubsetSumNoAdjacent;
