@@ -15,5 +15,6 @@ const thirdMax = function(nums) {
       third = nums[i]
     }
   }
+
   return third !== -Infinity ? third : first;
 };
