@@ -1,14 +1,16 @@
 function powerset(array) {
   // recursive solution
-  // if (!array.length) return [[]];
-  // const last = array[array.length - 1];
-  // const subs = powerset(array.slice(0, array.length-1));
-  
-  // return subs.concat(subs.map( sub => {
-  //   let newArr = sub.slice(0)
-  //   newArr.push(last);
-  //   return newArr;											
-  // }))
+  // if (idx < 0) return [[]];
+
+  // const el = array[idx];
+  // const subsets = powerset(array, idx - 1);
+  // const length = subsets.length;
+  // for (let i = 0; i < length; i++) {
+  //   const currSub = subsets[i];
+  //   subsets.push(currSub.concat([el]));
+  // }
+
+  // return subsets;
 
   // iterative solution
 	const subsets = [[]];
