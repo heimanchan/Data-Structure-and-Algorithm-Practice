@@ -30,7 +30,24 @@ function simpleIterFib(num) {
   return second
 }
 
-console.log(simpleIterFib(6)) // => 8
-console.log(simpleIterFib(12)) // => 144
-console.log(simpleIterFib(20)) // => 6765
-console.log(simpleIterFib(28)) // => 317811
+// console.log(simpleIterFib(6)) // => 8
+// console.log(simpleIterFib(12)) // => 144
+// console.log(simpleIterFib(20)) // => 6765
+// console.log(simpleIterFib(28)) // => 317811
+
+function memoFib(num, memo = {}) {
+  if (num < 1) return 0;
+  if (num === 1 || num === 2) return 1;
+
+  memo[1] = 1;
+  memo[2] = 1;
+
+  memo[num] = memoFib(num - 2, memo) + memoFib(num - 1, memo)
+
+  return memo[num]
+}
+
+console.log(memoFib(6)) // => 8
+console.log(memoFib(12)) // => 144
+console.log(memoFib(20)) // => 6765
+console.log(memoFib(28)) // => 317811
