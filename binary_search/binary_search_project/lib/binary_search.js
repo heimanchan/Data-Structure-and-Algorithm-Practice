@@ -15,12 +15,12 @@ function binarySearch(array, target) {
 }
 
 function binarySearchIndex(array, target, low = 0, high = array.length - 1) {
-  if (low === high) return -1;
+  if (low > high) return -1;
 
   let mid = Math.floor((low + high) / 2);
 
   if (target < array[mid]) {
-    return binarySearchIndex(array, target, 0, mid)
+    return binarySearchIndex(array, target, low, mid - 1)
   } else if (target > array[mid]) {
     return binarySearchIndex(array, target, mid + 1, high)
   } else {
@@ -28,6 +28,7 @@ function binarySearchIndex(array, target, low = 0, high = array.length - 1) {
   }
 }
 
+console.log(binarySearchIndex([1,2,3,4,5], 5))
 
 module.exports = {
     binarySearch,

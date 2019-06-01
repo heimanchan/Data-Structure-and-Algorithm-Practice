@@ -38,4 +38,11 @@ describe('binarySearchIndex', () => {
             expect(binarySearchIndex([], 3)).to.equal(-1);
         });
     });
+
+    context('when the target is the last in the array', () => {
+      it('should return the index', () => {
+        expect(binarySearchIndex([5, 10, 12, 15, 20, 30, 70], 70)).to.equal(6);
+        expect(binarySearchIndex([1,2,3,4,5], 5)).to.equal(4);
+      });
+    });
 });

@@ -24,18 +24,31 @@
 // Tabulation:
 // 
 function stepper(nums) {
-  let table = new Array(nums.length).fill(false);
+  // let table = new Array(nums.length).fill(false);
+  // table[0] = true;
+
+  // for (let i = 0; i < table.length; i++) {
+  //   if (table[i] === true) {
+  //     for (let j = 1; j <= nums[i]; j++) {
+  //       table[j + i] = true;
+  //     }
+  //   }
+  // }
+
+  // return table[table.length - 1]
+  if (!nums.length || nums[0] === 0) return false;
+  let table = new Array(nums.length);
   table[0] = true;
 
   for (let i = 0; i < table.length; i++) {
     if (table[i] === true) {
-      for (let j = 1; j <= nums[i]; j++) {
-        table[j + i] = true;
+      for (let j = i + 1; j <= nums[i]; j++) {
+        table[j] = true;
       }
     }
   }
 
-  return table[table.length - 1]
+  return !!table[table.length-1];
 }
 
 // Memoization: 
