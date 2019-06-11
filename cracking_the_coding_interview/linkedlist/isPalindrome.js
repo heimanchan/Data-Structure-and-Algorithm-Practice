@@ -1,29 +1,25 @@
 const ListNode = require("./listNode");
 
 function isPalindrome(head) {
-  let stack = [];
-  let node = head;
+  const stack = [];
+  let fast = slow = head;
 
-  while (node) {
-    stack.push(node);
-    node = node.next;
+  while (fast && fast.next) {
+    stack.push(slow.value);
+    slow = slow.next;
+    fast = fast.next.next;
   }
 
-  let reversedList = new ListNode(stack.pop().value);
-  let reverseNode = reversedList;
-  while (stack.length) {
-    reverseNode.next = stack.pop();
-    reverseNode = reverseNode.next;
+  // odd number of elements
+  if (fast !== null) {
+    slow = slow.next;
   }
-  reverseNode.next = null;
 
-  while (head && reversedList) {
-    if (head.value !== reversedList.value) {
-      return false;
-    } else {
-      head = head.next;
-      reversedList = reversedList.next;
+  while (slow !== null) {
+    if (slow.value !== stack.pop()) {
+      return false
     }
+    slow = slow.next;
   }
 
   return true;
