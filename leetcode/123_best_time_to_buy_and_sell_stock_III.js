@@ -10,7 +10,9 @@ const maxProfit = function(prices) {
   for (let t = 1; t <= 2; t++) {
     let maxSoFar = -Infinity
     for (let d = 1; d < prices.length; d++) {
+      //profit offset new cost = profit of first trans - cost of new price
       maxSoFar = Math.max(maxSoFar, profits[t-1][d-1] - prices[d-1])
+      // new profit = either previous max or profit offset new cost + new price
       profits[t][d] = Math.max(profits[t][d-1], maxSoFar + prices[d])
     }
   }
