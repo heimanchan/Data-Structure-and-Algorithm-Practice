@@ -1,26 +1,32 @@
-function smallestDifference(array1, array2) {
-	array1 = array1.sort((a, b) => a - b);
-	array2 = array2.sort((a, b) => a - b);
-	let result = [];
-	let p = q = 0;
-	let smallest = Infinity;
-	
-	while (p < array1.length && q < array2.length) {
-		let diff = Math.abs(array1[p] - array2[q]);
-		
-		if (diff < smallest) {
-			smallest = diff;
-			result = [array1[p], array2[q]];
-		}
-		
-		if (array1[p] < array2[q]) {
-			p++;
-		} else if (array1[p] > array2[q]) {
-			q++;
-		} else { //num1 and num2 are equal, so their difference is 0, return ans
-			return result;
-		}
-	}
-	
-	return result;
+// Find the pair from two input arrays that makes the smallest difference closest to zero
+// First element from array1 and second element from array2
+// Assume there is only one pair
+
+function smallestDifference(arrayOne, arrayTwo) {
+  const sortedOne = Array.from(arrayOne).sort((a, b) => a - b)
+  const sortedTwo = Array.from(arrayTwo).sort((a, b) => a - b)
+  let p = 0, q = 0;
+  let minDiff = Infinity;
+  let result = [];
+
+  while (p < sortedOne.length && q < sortedTwo.length) {
+    let absDiff = Math.abs(sortedOne[p] - sortedTwo[q]);
+
+    if (absDiff < minDiff) {
+      result = [sortedOne[p], sortedTwo[q]]
+      minDiff = absDiff;
+    }
+
+    if (sortedOne[p] > sortedTwo[q]) {
+      q++;
+    } else if (sortedOne[p] < sortedTwo[q]) {
+      p++;
+    } else {
+      return result
+    }
+  }
+
+  return result;
 }
+
+console.log(smallestDifference([-1,5,10,20,28,3], [26,134,135,17,15])) //=> [28,26]
