@@ -1,19 +1,21 @@
+// Find all numbers in the input array that sum up to the target
+
 function threeNumberSum(array, targetSum) {
-  let sorted = array.sort((a, b) => a - b);
-  let result = [];
+  const sorted = Array.from(array).sort((a, b) => a - b);
+  const result = [];
 
   for (let i = 0; i < sorted.length; i++) {
-    let p = i + 1;
-    let q = sorted.length - 1;
+    let p = i + 1, q = sorted.length - 1;
+
     while (p < q) {
-      let currSum = sorted[i] + sorted[p] + sorted[q];
-      if (currSum === targetSum) {
-        result.push([sorted[i], sorted[p], sorted[q]]);
-        p++;
+      let currSum = sorted[i] + sorted[p] + sorted[q]
+      if (currSum > targetSum) {
         q--;
       } else if (currSum < targetSum) {
+        p++
+      } else {
+        result.push([sorted[i], sorted[p], sorted[q]])
         p++;
-      } else if (currSum > targetSum) {
         q--;
       }
     }

@@ -8,7 +8,7 @@ function maxProfitWithKTransactions(prices, k) {
 	}
 	
 	for (let t = 1; t < k + 1; t++) {
-		let currMax = -Infinity
+		let currMaxProfit = -Infinity
 		for (let d = 1; d < prices.length; d++) {
 			currMaxProfit = Math.max(currMaxProfit, profits[t-1][d-1] - prices[d-1])
 			profits[t][d] = Math.max(profits[t][d-1], currMaxProfit + prices[d])
