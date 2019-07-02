@@ -1,19 +1,22 @@
 function maxPathSum(tree) {
-	const [_, maxSum] = [...subMaxSum(tree)];
-	return maxSum;
-	
-	function subMaxSum(tree) {
-		if (!tree) return [0, 0];
-		
-		const [leftMaxBrunchSum, leftMaxPathSum] = subMaxSum(tree.left);
-		const [rightMaxBrunchSum, rightMaxPathSum] = subMaxSum(tree.right);
-		const maxChildBrunchSum = Math.max(leftMaxBrunchSum, rightMaxBrunchSum);
-		
-		const {value} = tree;
-		const maxBrunchSum = Math.max(maxChildBrunchSum + value, value);
-		const maxRootNodeSum = Math.max(leftMaxBrunchSum + value + rightMaxBrunchSum, maxBrunchSum);
-		const maxPathSum = Math.max(leftMaxPathSum, rightMaxPathSum, maxRootNodeSum);
-		
-		return [maxBrunchSum, maxPathSum]
-	}
+  const [_, maxPathSum] = [...findMaxSum(tree)]
+
+  return maxPathSum;
+}
+
+function findMaxSum(tree) {
+  if (!tree) return [0, 0];
+
+  const [leftBrunchSum, leftPathSum] = findMaxSum(tree.left);
+  const [rightBrunchSum, rightPathSum] = findMaxSum(tree.right);
+  const maxChildBrunchSum = Math.max(leftBrunchSum, rightBrunchSum);
+
+  const { value } = tree;
+  // 											handle negative sum case, e.g. -1 + 2 < 2
+  const maxBrunchSum = Math.max(maxChildBrunchSum + value, value);
+  const subTreeSum = leftBrunchSum + value + rightBrunchSum;
+  const maxRootSum = Math.max(subTreeSum, maxBrunchSum);
+  const maxPathSum = Math.max(leftPathSum, rightPathSum, maxRootSum);
+
+  return [maxBrunchSum, maxPathSum]
 }
