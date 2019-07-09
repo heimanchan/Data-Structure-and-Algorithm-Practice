@@ -1,9 +1,23 @@
 var preorderTraversal = function(root) {
+  // if (!root) return [];
+  // let result = [];
+
+  // helper(root, result);
+  // return result;
+
   if (!root) return [];
   let result = [];
+  let stack = [root];
 
-  helper(root, result);
-  return result
+  while (stack.length) {
+    let node = stack.pop();
+
+    result.push(node.val);
+    if (node.right) stack.push(node.right);
+    if (node.left) stack.push(node.left);
+  }
+
+  return result;
 };
 
 function helper(node, result) {
