@@ -26,3 +26,31 @@ var addTwoNumbers = function(l1, l2) {
   
   return result.next;
 }
+
+// def add_two_numbers(l1, l2)
+//   node1 = l1
+//   node2 = l2
+//   sum = 0
+//   result = ListNode.new(0)
+//   dummy = result
+
+//   while (node1 != nil || node2 != nil)
+//     sum /= 10
+
+//   if (node1 != nil)
+//     sum += node1.val
+//   node1 = node1.next
+//   end
+
+//   if (node2 != nil)
+//     sum += node2.val
+//   node2 = node2.next
+//   end
+
+//   dummy.next = ListNode.new(sum % 10)
+//   dummy = dummy.next
+//   end
+
+//   dummy.next = ListNode.new(1) if (sum / 10 == 1)
+//   result.next
+// end
