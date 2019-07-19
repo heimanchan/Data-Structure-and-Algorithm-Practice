@@ -1,15 +1,4 @@
-const isSymmetric = function(root) {
-//   return isMirror(root,root)
-  
-//   function isMirror(t1, t2) {
-//     if (t1 === null && t2 === null) return true;
-//     if (t1 === null || t2 === null) return false;
-    
-//     return (t1.val === t2.val)
-//       && isMirror(t1.left, t2.right)
-//       && isMirror(t1.right, t2.left)
-//   }
-  
+const isSymmetric = function(root) {  
   let queue = [root, root];
   while(queue.length) {
     let t1 = queue.shift();
@@ -22,4 +11,19 @@ const isSymmetric = function(root) {
   }
   
   return true;
+};
+
+var isSymmetric = function (root) {
+  if (!root) return true;
+
+  return isNodeSymmetric(root.left, root.right);
+
+  function isNodeSymmetric(left, right) {
+    if (!left && !right) return true;
+    if (!left || !right) return false;
+
+    return left.val === right.val &&
+      (isNodeSymmetric(left.left, right.right) &&
+        isNodeSymmetric(left.right, right.left))
+  }
 };
