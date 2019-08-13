@@ -7,9 +7,18 @@ const graph = {
   'f': ['e']
 }
 
+let graph2 = {
+  'h': ['i', 'j'],
+  'i': [],
+  'j': ['k'],
+  'k': [],
+  'l': ['m'],
+  'm': []
+}
+
 function depthFirst(graph) {
   let visited = new Set();
-  
+
   for (let node in graph) {
     helper(node, graph, visited)
   }
@@ -27,3 +36,5 @@ function helper(node, graph, visited) {
 }
 
 depthFirst(graph)
+console.log("")
+depthFirst(graph2)
