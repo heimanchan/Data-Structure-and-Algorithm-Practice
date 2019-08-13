@@ -17,14 +17,33 @@ c.neighbors = [b, d];
 e.neighbors = [a];
 f.neighbors = [e];
 
+
+// Recursive
+// function dfsTraverse(node, visited = new Set()) {
+//   if (visited.has(node.val)) return;
+
+//   console.log(node.val);
+//   visited.add(node.val);
+
+//   node.neighbors.forEach(neighbor => {
+//     dfsTraverse(neighbor, visited);
+//   });
+// }
+
+
+// Iteration
 function dfsTraverse(node, visited = new Set()) {
-  if (visited.has(node.val)) return;
+  let stack = [node];
 
-  console.log(node.val);
-  visited.add(node.val);
+  while (stack.length) {
+    let curr = stack.pop();
+    if (visited.has(curr.val)) continue;
 
-  node.neighbors.forEach(neighbor => {
-    dfsTraverse(neighbor, visited);
-  });
+    console.log(curr.val);
+    visited.add(curr.val);
+
+    stack.push(...curr.neighbors);
+  }
 }
 
+dfsTraverse(f)
