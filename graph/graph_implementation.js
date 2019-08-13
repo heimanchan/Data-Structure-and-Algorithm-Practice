@@ -16,3 +16,15 @@ a.neighbors = [b, c, e];
 c.neighbors = [b, d];
 e.neighbors = [a];
 f.neighbors = [e];
+
+function dfsTraverse(node, visited = new Set()) {
+  if (visited.has(node.val)) return;
+
+  console.log(node.val);
+  visited.add(node.val);
+
+  node.neighbors.forEach(neighbor => {
+    dfsTraverse(neighbor, visited);
+  });
+}
+
