@@ -1,22 +1,22 @@
-input = [
-    'mission statement',
-    'a quick bite to eat',
-    'a chip off the old block',
-    'chocolate bar',
-    'mission impossible',
-    'a man on a mission',
-    'block party',
-    'eat my words',
-    'bar of soap'
-]
+// input = [
+//     'mission statement',
+//     'a quick bite to eat',
+//     'a chip off the old block',
+//     'chocolate bar',
+//     'mission impossible',
+//     'a man on a mission',
+//     'block party',
+//     'eat my words',
+//     'bar of soap'
+// ]
 
-expected output = [
-    'a quick bite to eat my words',
-    'a chip off the old block party',
-    'chocolate bar of soap',
-    'a man on a mission statement',  
-    'a man on a mission impossible'
-]
+// expected output = [
+//     'a quick bite to eat my words',
+//     'a chip off the old block party',
+//     'chocolate bar of soap',
+//     'a man on a mission statement',  
+//     'a man on a mission impossible'
+// ]
 
 function generate_phrases(phrases) {
     let result = [];
