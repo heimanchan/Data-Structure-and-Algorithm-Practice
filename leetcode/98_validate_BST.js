@@ -18,13 +18,13 @@ const isValidBST = function (root) {
   //   return true;
   if (!root) return true;
 
-  function dfs(node, min, max) {
+  function helper(node, min, max) {
     if (!node) return true;
-    console.log(min, max)
+
     if ((min !== null && node.val <= min) || (max !== null && node.val >= max)) return false;
 
-    return dfs(node.left, min, node.val) && dfs(node.right, node.val, max)
+    return helper(node.left, min, node.val) && helper(node.right, node.val, max)
   }
 
-  return dfs(root, null, null)
+  return helper(root, null, null)
 };
