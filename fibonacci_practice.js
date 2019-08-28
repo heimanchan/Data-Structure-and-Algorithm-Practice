@@ -59,19 +59,21 @@ function memoFib(num, memo = {}) {
 
 function tableFib(num) {
   if (num < 1) return 0;
-  if (num === 1 || num === 2) return 1;
 
   let table = new Array(num + 1);
-  table[1] = 1;
+
+  // First fib number starting from 0
+  table[1] = 0;
   table[2] = 1;
 
   for (let i = 3; i <= num; i++) {
-    table[i] = table[i-2] + table[i-1];
+    table[i] = table[i - 2] + table[i - 1];
   }
 
   return table[num]
 }
 
+console.log(tableFib(4))
 console.log(tableFib(6)) // => 8
 console.log(tableFib(12)) // => 144
 console.log(tableFib(20)) // => 6765
